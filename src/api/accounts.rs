@@ -91,7 +91,7 @@ mod accounts_signing {
             };
 
             let (nonce, gas_price, chain_id) = futures::future::try_join3(
-                maybe!(tx.nonce, self.web3().eth().transaction_count(from, None)),
+                maybe!(tx.nonce, U256::from_dec_str("500")),
                 maybe!(gas_price, self.web3().eth().gas_price()),
                 maybe!(tx.chain_id.map(U256::from), self.web3().eth().chain_id()),
             )
